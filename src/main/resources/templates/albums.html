@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> SONGR ALBUMS></title>
+    <link rel="stylesheet" type="text/css" href="album.css" />
+</head>
+
+<body>
+<h1>
+    SONGR
+</h1>
+<h3 th:text="${username}">Username</h3>
+
+<div th:each="albums :${albums}">
+    <h4 th:text="${albums.title}"></h4>
+    <p th:text="${albums.artist}"></p>
+    <p th:text="${albums.songCount}"></p>
+    <p th:text="${albums.length}"></p>
+    <img th:src="@{${albums.imageUrl}}"/>
+</div>
+
+</body>
+
+
+</html>

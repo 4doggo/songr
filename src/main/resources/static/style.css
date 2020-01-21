@@ -1,0 +1,23 @@
+body{
+
+align-content: center;
+margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+
+}
+
+music-splash{
+
+max-width: 100%;
+  height: auto;
+
+}
+
+img{
+max-width: 100%;
+  height: auto;
+  }
+
