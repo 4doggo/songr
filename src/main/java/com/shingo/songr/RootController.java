@@ -14,7 +14,6 @@ public class RootController {
         m.addAttribute("username","Shingo");
 
         return "home";
-
     }
 
     @GetMapping("/hello")
@@ -23,10 +22,10 @@ public class RootController {
         return "hello world";
     }
 
-    @GetMapping("/capitalize/{world}")
+    @GetMapping("/capitalize/{input}")
     @ResponseBody
-    public String capitalize(@PathVariable String world){
-        return world.toUpperCase();
+    public String capitalize(@PathVariable String input){
+        return input.toUpperCase();
     }
 
     @GetMapping("/albums")
@@ -40,7 +39,6 @@ public class RootController {
         };
 
         m.addAttribute("albums",albums);
-
 
         return "albums";
     }
