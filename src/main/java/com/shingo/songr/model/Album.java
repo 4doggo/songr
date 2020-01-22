@@ -15,7 +15,7 @@ public class Album {
     long id;
 
 //    default constructor
-    public void album(){}
+    public Album(){}
 
     private String title;
     private String artist;
@@ -30,6 +30,7 @@ public class Album {
         this.length = length;
         this.imageUrl = imageUrl;
     }
+
 
     public String getTitle() {
         return title;
@@ -49,5 +50,9 @@ public class Album {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public long getId() {
+        return id;
     }
 }
