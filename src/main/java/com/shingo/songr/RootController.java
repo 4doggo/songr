@@ -49,21 +49,17 @@ public class RootController {
                 new Album("Best Hits of the 90s","Jonathan",125000,400,"https://images.unsplash.com/photo-1578894934390-f83bb626aeb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=786&q=80")
         };
 
-        List<Album> albums1 = repo.findAll();
-
-
-        m.addAttribute("albums",albums);
+        List<Album> entries = repo.findAll();
+        m.addAttribute("albums",entries);
 
         return "albums";
     }
 
     @PostMapping("/newalbums")
     public RedirectView addAlbum(String title, String artist, Integer songCount, Integer length, String imageUrl){
-        Album newAlbum = new Album (title, artist, songCount, length, imageUrl) {
-        };
-
+        Album newAlbum = new Album (title, artist, songCount, length, imageUrl);
         repo.save(newAlbum);
-        return new RedirectView("/");
+        return new RedirectView("/albums");
     }
 
 }
