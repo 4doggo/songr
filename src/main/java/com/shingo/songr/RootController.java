@@ -1,13 +1,24 @@
 package com.shingo.songr;
 
+import com.shingo.songr.model.Album;
+import com.shingo.songr.model.AlbumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 public class RootController {
+
+    @Autowired
+    AlbumRepository repo;
+
 
     @GetMapping("/")
     public String getHome(Model m) {
@@ -38,8 +49,21 @@ public class RootController {
                 new Album("Best Hits of the 90s","Jonathan",125000,400,"https://images.unsplash.com/photo-1578894934390-f83bb626aeb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=786&q=80")
         };
 
+        List<Album> albums1 = repo.findAll();
+
+
         m.addAttribute("albums",albums);
 
         return "albums";
     }
+
+    @PostMapping("/newalbums")
+    public RedirectView addAlbum(String title, String artist, Integer songCount, Integer length, String imageUrl){
+        Album newAlbum = new Album (title, artist, songCount, length, imageUrl) {
+        };
+
+        repo.save(newAlbum);
+        return new RedirectView("/");
+    }
+
 }

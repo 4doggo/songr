@@ -1,9 +1,7 @@
 package com.shingo.songr;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-import org.junit.jupiter.api.BeforeAll;
+import com.shingo.songr.model.Album;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
