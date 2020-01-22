@@ -1,6 +1,22 @@
-package com.shingo.songr;
+package com.shingo.songr.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//save things in db using @Entity
+@Entity
 public class Album {
+
+    @Id
+//    takes in strategy
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+
+//    default constructor
+    public void album(){}
+
     private String title;
     private String artist;
     private int songCount;
