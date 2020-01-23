@@ -2,6 +2,8 @@ package com.shingo.songr;
 
 import com.shingo.songr.model.Album;
 import com.shingo.songr.model.AlbumRepository;
+import com.shingo.songr.model.Song;
+import com.shingo.songr.model.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,12 @@ import java.util.List;
 @Controller
 public class RootController {
 
+//    used to appear in db wiring interface
     @Autowired
     AlbumRepository repo;
+
+    @Autowired
+    SongRepository songRepo;
 
 
     @GetMapping("/")
@@ -43,12 +49,6 @@ public class RootController {
     public String getAlbum(Model m){
     m.addAttribute("username","Shingo");
 
-        Album[] albums = new Album[]{
-                new Album("The Wave","Donald",5000,160,"https://images.unsplash.com/photo-1553378950-0ba726c8ca1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"),
-                new Album("Essential Pop Music","Mariah",51000,240,"https://images.unsplash.com/photo-1575648517354-5b77e77ecb0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80"),
-                new Album("Best Hits of the 90s","Jonathan",125000,400,"https://images.unsplash.com/photo-1578894934390-f83bb626aeb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=786&q=80")
-        };
-
         List<Album> entries = repo.findAll();
         m.addAttribute("albums",entries);
 
@@ -61,5 +61,14 @@ public class RootController {
         repo.save(newAlbum);
         return new RedirectView("/albums");
     }
+//
+//    @PostMapping("/newalbums")
+//        public RedirectView addSong(@PathVariable String title, Integer length, Integer trackNumber, Album album){
+//            Song song = new Song(title, length, trackNumber, album);
+////            Album entry = repo.getOne(id);
+////            song.setEntry(entry);
+////            songRepo.save(song);
+//            return new RedirectView("/albums");
+//        }
+    }
 
-}
