@@ -18,3 +18,5 @@ Contributer: Shingo Nakajima
 8. Submit necessary album info including working image url 
 9. It will automatically redirect you to /albums page
 10. Check db to see if album was added to table by SELECT * from <table name>; 
+11. Click on details to go to songs within album 
+12. Submit song names in the album 
