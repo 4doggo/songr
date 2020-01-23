@@ -61,14 +61,27 @@ public class RootController {
         repo.save(newAlbum);
         return new RedirectView("/albums");
     }
-//
-//    @PostMapping("/newalbums")
-//        public RedirectView addSong(@PathVariable String title, Integer length, Integer trackNumber, Album album){
-//            Song song = new Song(title, length, trackNumber, album);
-////            Album entry = repo.getOne(id);
-////            song.setEntry(entry);
-////            songRepo.save(song);
-//            return new RedirectView("/albums");
-//        }
+
+    @GetMapping("/addsong")
+    public String addSongs(){
+        return "addsong";
+    }
+
+    @GetMapping("/songs")
+    public String getSongs(Model m){
+
+        List<Song> entries = songRepo.findAll();
+        m.addAttribute("songs",entries);
+
+        return "songs";
+    }
+
+    @PostMapping("/newsongs")
+    public RedirectView addSong(String title,Integer songCount, Integer length){
+        Song newSong = new Song (title, songCount, length);
+        songRepo.save(newSong);
+        return new RedirectView("/songs");
+    }
+
     }
 

@@ -21,12 +21,12 @@ public class Song {
     public Song(){}
 
     //    constructor for song
-    public Song(String title, int length, int trackNumber, Album album){
+    public Song(String title, int length, int trackNumber){
 
         this.title =title;
         this.length=length;
         this.trackNumber=trackNumber;
-        this.album=album;
+//        this.album=album;
     }
 
     public long getId() {

@@ -38,8 +38,6 @@ public class Album {
         this.imageUrl = imageUrl;
     }
 
-
-
     public String getTitle() {
         return title;
     }
